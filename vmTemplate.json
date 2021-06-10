@@ -29,7 +29,7 @@
         }, 
         "customize": [
         {
-            "type": "Shell",
+            "type": "Powershell",
             "name": "CreateTempFolder",
             "inline": [
                 "New-Item -Type Directory -Path 'c:\\' -Name temp"
@@ -37,14 +37,14 @@
         },
 
         {
-            "type": "Shell",
+            "type": "Powershell",
             "name": "PythonInstall",
             "runElevated": true,
             "scriptUri": "<Script Uri>"
         },
 
         {
-            "type": "Shell",
+            "type": "Powershell",
             "name": "AnacondaInstall",
             "runElevated": true,
             "scriptUri": "<Script Uri>"
@@ -58,6 +58,12 @@
         {
             "type": "Powershell",
             "name": "DrProbeInstall",
+            "runElevated": true,
+            "scriptUri": "<Script Uri>"
+        },
+        {
+            "type": "Shell",
+            "name": "RigidregistrationInstall",
             "runElevated": true,
             "scriptUri": "<Script Uri>"
         }
