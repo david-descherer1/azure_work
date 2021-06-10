@@ -48,7 +48,20 @@
             "name": "AnacondaInstall",
             "runElevated": true,
             "scriptUri": "<Script Uri>"
+        },
+        {
+            "type": "Powershell",
+            "name": "NionswiftInstall",
+            "runElevated": true,
+            "scriptUri": "<Script Uri>"
+        },
+        {
+            "type": "Powershell",
+            "name": "DrProbeInstall",
+            "runElevated": true,
+            "scriptUri": "<Script Uri>"
         }
+
     ], 
         "distribute": [
             {
