@@ -1,0 +1,66 @@
+{ 
+    "type": "Microsoft.VirtualMachineImages/imageTemplates", 
+    "apiVersion": "2020-02-14", 
+    "location": "EastUS2", 
+    "tags": {
+        "<imagebuilderTemplate": "windows10Multi",
+        "userIdentity": "enabled"
+     },
+    "identity":{
+        "type": "UserAssigned",
+                "userAssignedIdentities": {
+                "<imgBuilderId>": {}
+                }
+    },			 
+    "dependsOn": [], 
+    "properties": { 
+        "buildTimeoutInMinutes": 200, 
+        "vmProfile": 
+            {
+            "vmSize": "Standard_D2_v2",
+            "osDiskSizeGB": 127
+            },
+        "source": {
+            "type": "PlatformImage",
+            "publisher": "MicrosoftWindowsDesktop",
+            "offer": "Windows-10",
+            "sku": "20h1-evd",
+            "version": "latest"
+        }, 
+        "customize": [
+        {
+            "type": "Shell",
+            "name": "CreateTempFolder",
+            "inline": [
+                "New-Item -Type Directory -Path 'c:\\' -Name temp"
+            ]
+        },
+
+        {
+            "type": "Shell",
+            "name": "PythonInstall",
+            "runElevated": true,
+            "scriptUri": "<Script Uri>"
+        },
+
+        {
+            "type": "Shell",
+            "name": "AnacondaInstall",
+            "runElevated": true,
+            "scriptUri": "<Script Uri>"
+        }
+    ], 
+        "distribute": [
+            {
+              "type": "ManagedImage",
+              "imageId": "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/images/<imageName>",
+              "location": "<region>",
+              "runOutputName": "<runOutputName>",
+              "artifactTags": {
+                "source": "azVmImageBuilder",
+                "baseosimg": "windows10Multi"
+              }
+            }
+          ]
+      } 
+ } 
