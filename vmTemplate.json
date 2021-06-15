@@ -35,7 +35,6 @@
                 "New-Item -Type Directory -Path 'c:\\' -Name temp"
             ]
         },
-
         {
             "type": "Powershell",
             "name": "PythonInstall",
