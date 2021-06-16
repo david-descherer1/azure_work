@@ -39,5 +39,13 @@ az role assignment create \
     --role Contributor \
     --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
 
+curl https://raw.githubusercontent.com/david-descherer1/azure_work/master/basicVMTemplate.json -o basicVMTemplate.json
+
+sed -i -e "s/<subscriptionID>/$subscriptionID/g" basicVMTemplate.json
+sed -i -e "s/<rgName>/$imageResourceGroup/g" basicVMTemplate.json
+sed -i -e "s/<region>/$location/g" basicVMTemplate.json
+sed -i -e "s/<imageName>/$imageName/g" basicVMTemplate.json
+sed -i -e "s/<runOutputName>/$runOutputName/g" basicVMTemplate.json
+sed -i -e "s%<imgBuilderId>%$imgBuilderId%g" basicVMTemplate.json
 
 
