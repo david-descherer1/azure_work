@@ -17,6 +17,7 @@ subscriptionID=$(az account show --query id --output tsv)
 az group create -n $imageResourceGroup -l $location
 
 identityName=aibBuiUserId$(date +'%s')
+
 az identity create -g $imageResourceGroup -n $identityName
 
 imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $identityName | grep "clientId" | cut -c16- | tr -d '",')
@@ -48,4 +49,25 @@ sed -i -e "s/<imageName>/$imageName/g" basicVMTemplate.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" basicVMTemplate.json
 sed -i -e "s%<imgBuilderId>%$imgBuilderId%g" basicVMTemplate.json
 
+az resource create \
+    --resource-group $imageResourceGroup \
+    --properties @basicVMTemplate.json \
+    --is-full-object \
+    --resource-type Microsoft.VirtualMachineImages/imageTemplates \
+    -n testImageTemplateWin01
+
+az resource invoke-action \
+     --resource-group $imageResourceGroup \
+     --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
+     -n testImageTemplateWin01 \
+     --action Run 
+
+az vm create \
+  --resource-group $imageResourceGroup \
+  --name testImgWinVm00 \
+  --admin-username aibuser \
+  --admin-password @Testuserpassword1 \
+  --image $imageName \
+  --location $location
+#VM should be created in personal Azure Portal
 
