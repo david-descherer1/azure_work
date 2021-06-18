@@ -1,4 +1,3 @@
-#Script to Install Anaconda3 on Windows without UI
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-Invoke-WebRequest -Uri "https://repo.anaconda.com/archive/Anaconda3-2021.05-Windows-x86.exe" -OutFile "c:/temp/Anaconda3-2021.05-Windows-x86.exe"
-start /wait "" Anaconda3-2021.05-Windows-x86.exe /InstallationType=JustMe /S /D=c:/temp/Anaconda3-2021.05-Windows-x86.exe
+#Script to finish install of Anaconda
+#anaconda download script must precede this script
+start /wait "" Anaconda3-2021.05-Windows-x86.exe /InstallationType=JustMe /AddToPath=1 /S /D=c:/temp/Anaconda3-2021.05-Windows-x86.exe
