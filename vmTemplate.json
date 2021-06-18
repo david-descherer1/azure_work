@@ -39,20 +39,25 @@
             "type": "Powershell",
             "name": "PythonInstall",
             "runElevated": true,
-            "scriptUri": "<Script Uri>"
+            "scriptUri": "https://raw.githubusercontent.com/david-descherer1/azure_work/master/pyInstall.ps1"
         },
-
         {
             "type": "Powershell",
+            "name": "AnacondaDownload",
+            "runElevated": true,
+            "scriptUri": "https://raw.githubusercontent.com/david-descherer1/azure_work/master/anacondaDownload.ps1"
+        },
+        {
+            "type": "Shell",
             "name": "AnacondaInstall",
             "runElevated": true,
-            "scriptUri": "<Script Uri>"
+            "scriptUri": "https://raw.githubusercontent.com/david-descherer1/azure_work/master/anacondaInstall.sh"
         },
         {
-            "type": "Powershell",
+            "type": "Shell",
             "name": "NionswiftInstall",
             "runElevated": true,
-            "scriptUri": "<Script Uri>"
+            "scriptUri": "https://raw.githubusercontent.com/david-descherer1/azure_work/master/nionswift.sh"
         },
         {
             "type": "Powershell",
@@ -61,10 +66,16 @@
             "scriptUri": "<Script Uri>"
         },
         {
+            "type": "Powershell",
+            "name": "RigidRegistrationDownload",
+            "runElevated": true,
+            "scriptUri": "https://raw.githubusercontent.com/david-descherer1/azure_work/master/rigidRegistrationDownload.ps1"
+        },
+        {
             "type": "Shell",
             "name": "RigidregistrationInstall",
             "runElevated": true,
-            "scriptUri": "<Script Uri>"
+            "scriptUri": "https://raw.githubusercontent.com/david-descherer1/azure_work/master/rigidregistrationInstall.sh"
         }
 
     ], 
