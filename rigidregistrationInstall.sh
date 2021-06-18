@@ -1,5 +1,4 @@
 #RigidRegistration Package Install
 cd c:\\temp
-git clone https://github.com/bsavitzky/rigidRegistration.git
-cd c:\\temp\\rigidregistration
+cd c:\\temp\\rigidregistration-master
 python setup.py install 
