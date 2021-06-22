@@ -1,3 +1,4 @@
+#!/bin/bash
 #RigidRegistration Package Install
 cd c:\\temp
 cd c:\\temp\\rigidregistration-master

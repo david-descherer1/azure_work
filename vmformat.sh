@@ -1,3 +1,4 @@
+#!/bin/bash
 #script for formatting vm builder json
 #this needs to be customized>
 

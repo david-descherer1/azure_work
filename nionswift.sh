@@ -1,3 +1,4 @@
+#!/bin/bash
 #Install Nionswift with EELS and Experimental Tools
 conda update anaconda
 conda create -n nionswift -c nion nionswift nionswift-Tool
