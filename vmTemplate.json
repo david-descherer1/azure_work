@@ -63,7 +63,7 @@
             "type": "Powershell",
             "name": "DrProbeInstall",
             "runElevated": true,
-            "scriptUri": "<Script Uri>"
+            "scriptUri": "https://raw.githubusercontent.com/david-descherer1/azure_work/master/installDrProbeGUI.ps1"
         },
         {
             "type": "Powershell",
@@ -76,6 +76,35 @@
             "name": "RigidregistrationInstall",
             "runElevated": true,
             "scriptUri": "https://raw.githubusercontent.com/david-descherer1/azure_work/master/rigidregistrationInstall.sh"
+        },
+        {
+            "type": "Powershell",
+            "name": "CUDAToolkitInstall",
+            "runElevated": true,
+            "scriptUri": "need to finish testing"
+        },
+        {
+            "type": "Powershell",
+            "name": "muStemDownload",
+            "runElevated": true,
+            "scriptUri": "https://raw.githubusercontent.com/david-descherer1/azure_work/master/downloadmuSTEM.ps1"
+        },
+        {
+            "type": "Powershell",
+            "name": "downloadTapAdapter",
+            "runElevated": true,
+            "scriptUri": "need to finish testing"
+        },
+        {
+            "type": "Shell",
+            "name": "changeMACAdress",
+            "runElevated": true,
+            "scriptUri": "need to finish testing and may need install after"
+        },
+        {
+            "type": "WindowsRestart",
+            "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > c:\\buildArtifacts\\azureImageBuilderRestart.txt",
+            "restartTimeout": "5m"
         }
 
     ], 
