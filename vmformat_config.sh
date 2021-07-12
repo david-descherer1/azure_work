@@ -2,14 +2,16 @@
 #script for formatting vm builder json
 #this needs to be customized>
 
+source config.cfg
+
 # Resource Group Name 
-imageResourceGroup=<imageResourceGroup>
+#imageResourceGroup=<imageResourceGroup>
 # Region location 
-location=<location>
+#location=<location>
 # Name for the image to be created - what it will be called in azure portal
-imageName=<imageName>
-# Run output name - used to find information about the distribution of the vm. Must be different.
-runOutputName=<runOutputName>
+#imageName=<imageName>
+# Run output name - (whats the point)
+#runOutputName=<runOutputName>
 
 #Gets users Azure subscription ID
 subscriptionID=$(az account show --query id --output tsv)
@@ -32,7 +34,7 @@ imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/p
 #download role definition template
 curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
 
-#not sure there is a purpose for this
+#(still not sure point of this)
 imageRoleDefName="Azure Image Builder Image Def"$(date +'%s')
 
 #edit role definition template
@@ -40,7 +42,7 @@ sed -i -e "s/<subscriptionID>/$subscriptionID/g" aibRoleImageCreation.json
 sed -i -e "s/<rgName>/$imageResourceGroup/g" aibRoleImageCreation.json
 sed -i -e "s/Azure Image Builder Service Image Creation Role/$imageRoleDefName/g" aibRoleImageCreation.json
 
-# create role definitions - role definitions give permissions like reading and writing to the image builder on your subscription and resource group
+# create role definitions - role definitions give permissions like reading and writingto the image builder on your subscription and resource group
 az role definition create --role-definition ./aibRoleImageCreation.json
 
 #Gives created permissions to managed identity with given Client ID
@@ -68,13 +70,13 @@ az resource create \
     --properties @basicVMTemplate.json \
     --is-full-object \
     --resource-type Microsoft.VirtualMachineImages/imageTemplates \
-    -n testImageTemplateWin01
+    -n $imageTemplateName
 
 #Builds the image template to an image
 az resource invoke-action \
      --resource-group $imageResourceGroup \
      --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
-     -n testImageTemplateWin01 \
+     -n $imageTemplateName \
      --action Run 
 
 
@@ -82,13 +84,13 @@ az resource invoke-action \
 #resource-group identifies the resource group the vm will be made in
 #name - creates name of virtual machine
 #admin-username/password - username/password for logging into vm
-#image - can be default OS but in this case will be the custom image name
+#image - 
 #location - identifies the location for the vm to be created in
 az vm create \
   --resource-group $imageResourceGroup \
-  --name testImgWinVm00 \
-  --admin-username aibuser \
-  --admin-password @Testuserpassword1 \
+  --name $vmName \
+  --admin-username $admin_username \
+  --admin-password $admin_password \
   --image $imageName \
   --location $location
 #VM should be created in personal Azure Portal

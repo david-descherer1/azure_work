@@ -24,13 +24,15 @@
             "type": "PlatformImage",
             "publisher": "MicrosoftWindowsDesktop",
             "offer": "Windows-10",
-            "sku": "20h1-evd",
+            "sku": "20h2-evd",
             "version": "latest"
         }, 
         "customize": [
         {
             "type": "Powershell",
             "name": "CreateTempFolder",
+            "runElevated": true,
+            "runAsSystem": true,
             "inline": [
                 "New-Item -Type Directory -Path 'c:\\' -Name temp"
             ]
@@ -39,66 +41,77 @@
             "type": "Powershell",
             "name": "PythonInstall",
             "runElevated": true,
+            "runAsSystem": true,
             "scriptUri": "https://raw.githubusercontent.com/david-descherer1/azure_work/master/pyInstall.ps1"
         },
         {
             "type": "Powershell",
             "name": "AnacondaDownload",
             "runElevated": true,
+            "runAsSystem": true,
             "scriptUri": "https://raw.githubusercontent.com/david-descherer1/azure_work/master/anacondaDownload.ps1"
         },
         {
             "type": "Shell",
             "name": "AnacondaInstall",
             "runElevated": true,
+            "runAsSystem": true,
             "scriptUri": "https://raw.githubusercontent.com/david-descherer1/azure_work/master/anacondaInstall.sh"
         },
         {
             "type": "Shell",
             "name": "NionswiftInstall",
             "runElevated": true,
+            "runAsSystem": true,
             "scriptUri": "https://raw.githubusercontent.com/david-descherer1/azure_work/master/nionswift.sh"
         },
         {
             "type": "Powershell",
             "name": "DrProbeInstall",
             "runElevated": true,
+            "runAsSystem": true,
             "scriptUri": "https://raw.githubusercontent.com/david-descherer1/azure_work/master/installDrProbeGUI.ps1"
         },
         {
             "type": "Powershell",
             "name": "RigidRegistrationDownload",
             "runElevated": true,
+            "runAsSystem": true,
             "scriptUri": "https://raw.githubusercontent.com/david-descherer1/azure_work/master/rigidRegistrationDownload.ps1"
         },
         {
             "type": "Shell",
             "name": "RigidregistrationInstall",
             "runElevated": true,
+            "runAsSystem": true,
             "scriptUri": "https://raw.githubusercontent.com/david-descherer1/azure_work/master/rigidregistrationInstall.sh"
         },
         {
             "type": "Powershell",
             "name": "CUDAToolkitInstall",
             "runElevated": true,
+            "runAsSystem": true,
             "scriptUri": "need to finish testing"
         },
         {
             "type": "Powershell",
             "name": "muStemDownload",
             "runElevated": true,
+            "runAsSystem": true,
             "scriptUri": "https://raw.githubusercontent.com/david-descherer1/azure_work/master/downloadmuSTEM.ps1"
         },
         {
             "type": "Powershell",
             "name": "downloadTapAdapter",
             "runElevated": true,
+            "runAsSystem": true,
             "scriptUri": "need to finish testing"
         },
         {
             "type": "Shell",
             "name": "changeMACAdress",
             "runElevated": true,
+            "runAsSystem": true,
             "scriptUri": "need to finish testing and may need install after"
         },
         {
